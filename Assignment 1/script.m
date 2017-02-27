@@ -10,7 +10,7 @@ len_t = length(t);
 p = 0;
 q = 4;
 g = 5;
-D(1:len_s,1:len_t) = 0;
+%D(1:len_s,1:len_t) = 0;
 for i = 1:len_s+1
   D(i,1) = g*(i-1);
 end
