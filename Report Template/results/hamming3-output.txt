@@ -1,0 +1,9 @@
+Name: Anonymous
+ISC, Practical Example
+Hamming distance=22
+
+Alignment:
+
+GGTCCAATGGGATTATGGCCTCTCTATATTATCCA
+|   | |     ||     ||  |||  |||    
+GTCACCAACTTCTTTATATCTGGCTAGCTTAGATT
