@@ -1,0 +1,17 @@
+Name: Philip Oetinger, Thijs Baksteen
+IBC, Practical 3
+
+
+
+String s:
+GGAATGG
+
+String t:
+ATG
+
+Matrix D:
+
+
+
+Matrix P:
+
