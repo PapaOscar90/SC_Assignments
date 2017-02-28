@@ -26,10 +26,8 @@ for i = 2:len_s+1
     match = D(i-1,j-1);
     if s(i-1) != t(j-1)
       match += q;
-      strcat(l_al, ' ');
     else
       match += p;
-      strcat(l_al, '|');
     end
     delete = D(i-1,j) + g;
     delete2 = D(i,j-1) + g;
@@ -48,6 +46,6 @@ fprintf("D:\n");
 disp(D);
 fprintf("P:\n");
 disp(P);
-fprintf("\n", s, "\n");
-fprintf(l_al, "\n");
-fprintf(t, "\n");
+fprintf("\n%s\n", s);
+fprintf("%s\n", l_al);
+fprintf("%s\n", t);
