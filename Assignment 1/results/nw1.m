@@ -1,7 +1,7 @@
 % Assignment 1 - CS7
 % Thijs Baksteen s3145034
 % Phil Oetinger  s2966018
-in=fopen('nw_test1.txt');
+in=fopen('input.txt');
 s=fgetl(in);
 t=fgetl(in);
 fclose(in);
@@ -10,7 +10,7 @@ len_t = length(t);
 p = 0;
 q = 4;
 g = 5;
-D(1:len_s,1:len_t) = 0;
+D = [];
 for i = 1:len_s+1
   D(i,1) = g*(i-1);
 end
@@ -30,3 +30,4 @@ for i = 2:len_s+1
     D(i,j) = min([m,d,d2]);
   end
 end
+D
