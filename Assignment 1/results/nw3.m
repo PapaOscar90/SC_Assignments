@@ -41,11 +41,58 @@ for i = 2:len_s+1
     end
   end
 end
+i = len_s+1;
+j = len_t+1;
+s_al = "";
+t_al = "";
+l_al = "";
+while i != 1 || j != 1
+  c = P(i,j);
+  if (c == '\')
+    i -= 1;
+    j -= 1;
+    t_al = [t(j), t_al];
+    s_al = [s(i), s_al];
+    if (s(i) == t(j))
+      l_al = ['|', l_al];
+    else
+      l_al = [' ', l_al];
+    end
+  elseif (c == '|')
+    i -= 1;
+    l_al = [' ', l_al];
+    s_al = [s(i), s_al];
+    t_al = ['-', t_al];
+  elseif (c == '-')
+    j -= 1;
+    l_al = [' ', l_al];
+    t_al = [t(j), t_al];
+    s_al = ['-', s_al];
+  end
+end
+output=fopen('nw3-output.txt', 'w');      % open file
+fprintf(output,'Name: Philip Oetinger, Thijs Baksteen\n'); % enter your name(s)
+fprintf(output,'IBC, Practical 3\n\n');
+fprintf(output,'\n\nString s:\n');
+for i=1:length(s)
+  fprintf(output,'%s',s(i));
+end
+fprintf(output,'\n\nString t:\n');
+for i=1:length(t)
+  fprintf(output,'%s',t(i));
+end
 
-fprintf("D:\n");
-disp(D);
-fprintf("P:\n");
-disp(P);
-fprintf("\n%s\n", s);
-fprintf("%s\n", l_al);
-fprintf("%s\n", t);
+fprintf(output,'\n\nMatrix D:\n\n');
+for i=1:len_s+1
+  for j=1:len_t+1
+    fprintf(output, "%4d", D(i,j));
+  end
+  fprintf(output, "\n");
+end
+fprintf(output,'\n\nMatrix P:\n\n');
+dlmwrite(output,P,'');
+fprintf(output,'\n\nAlignment:\n\n');
+fprintf(output, "\n%s\n", s_al);
+fprintf(output, "%s\n", l_al);
+fprintf(output, "%s\n", t_al);
+fclose(output);
