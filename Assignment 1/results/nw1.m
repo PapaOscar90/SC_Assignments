@@ -1,7 +1,7 @@
 % Assignment 1 - CS7
 % Thijs Baksteen s3145034
 % Phil Oetinger  s2966018
-in=fopen('input.txt');
+in=fopen('nw_test1.txt');
 s=fgetl(in);
 t=fgetl(in);
 fclose(in);
