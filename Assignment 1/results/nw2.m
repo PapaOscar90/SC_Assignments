@@ -10,7 +10,8 @@ len_t = length(t);
 p = 0;
 q = 4;
 g = 5;
-%D(1:len_s,1:len_t) = 0;
+D = [];
+P = char([]);
 for i = 1:len_s+1
   D(i,1) = g*(i-1);
   P(i,1) = '|';
@@ -41,8 +42,5 @@ for i = 2:len_s+1
     end
   end
 end
-
-fprintf("D:\n");
-disp(D);
-fprintf("P:\n");
-disp(P);
+D
+P
