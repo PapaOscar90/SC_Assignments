@@ -43,42 +43,28 @@ A2=zeros(n+2,n+2);
 % occur between successive generations.
 
 
-%while A2 != A1 && gen<=max_gen
-%  A2 = A1;
-%  for j=2:n+1
-%    for k=2:n+1
-%      neighborSum=0;
-%      q=-1;
-%      for l=1:3
-%        if A1(j+q,k-1) == 1
-%%          neighborSum++;
- %       end
- %       if A1(j+q,k+1) == 1
- %         neighborSum++;
- %%       end
-  %      if A1(j-1,k) == 1
-  %        neighborSum++;
-  %      end
-  %%      if A1(j+1,k) == 1
-   %       neighborSum++;
-   %     end
-   %     q++;
-   %   end
-   %   if neighborSum < 4
-%        A1(j,k)=0;
- %     end
-  %  end
-%  end
-%  gen++;
-%  imHandle = imagesc(A,[0 1]);
-%  imfile = [imname,'_n=',int2str(n),'_p=',num2str(p),'_gen=',int2str(gen),'.png'];
-%  imwrite(A1, imfile);
-%end
-
-while gen < max_gen
+while gen<=max_gen
+  A2 = A1;
+  for j=2:n+1
+    for k=2:n+1
+      neighborSum=0;
+      M=A2(j-1:j+1,k-1:k+1)
+      neighborSum = sum(sum(M)-M(2,2))
+      A1(j,k) = neighborSum > 4;
+    end
+  end
+  gen++;
   imshow(A1);
   drawnow;
-  neighborSum = conv2(A1, [1 1 1; 1 0 1; 1 1 1], 'same');
-  A1 = double((A1 & neighborSum < 4) | neighborSum>4);
-  gen++;
+  %imHandle = imagesc(A,[0 1]);
+  %imfile = [imname,'_n=',int2str(n),'_p=',num2str(p),'_gen=',int2str(gen),'.png'];
+  %imwrite(A1, imfile);
 end
+
+%while gen < max_gen
+%  imshow(A1);
+%  drawnow;
+%  neighborSum = conv2(A1, [1 1 1; 1 0 1; 1 1 1], 'same');
+%  A1 = double((A1 & neighborSum < 4) | neighborSum>4);
+%  gen++;
+%end
