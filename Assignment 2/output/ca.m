@@ -49,7 +49,7 @@ while gen<=max_gen
     for k=2:n+1
       neighborSum=0;
       M=A2(j-1:j+1,k-1:k+1);
-      neighborSum = sum(sum(M)-M(2,2));
+      neighborSum = sum(sum(M));
       A1(j,k) = neighborSum > 4;
     end
   end
