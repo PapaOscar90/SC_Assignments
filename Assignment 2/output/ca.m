@@ -41,7 +41,9 @@ A2=zeros(n+2,n+2);
 % Now compute the successive generations via the majority rule. 
 % The algorithm should terminate as soon as no more differences 
 % occur between successive generations.
-
+imHandle = imagesc(A1,[0 1]);        % display the matrix A1 as an image. 
+                                     % The value range of A is [0 1].
+colormap(gray);                      % set a gray scale color table
 
 while gen<=max_gen
   A2 = A1;
@@ -49,16 +51,22 @@ while gen<=max_gen
     for k=2:n+1
       neighborSum=0;
       M=A2(j-1:j+1,k-1:k+1);
-      neighborSum = sum(sum(M));
-      A1(j,k) = neighborSum > 4;
+      neighborSum = sum(sum(M))-M(2,2);
+      if (A1(j,k) == 1 && neighborSum < 4)
+        A1(j,k) = 0;
+      elseif (A1(j,k) == 0 && neighborSum > 4)
+        A1(j,k) = 1;
+      end
     end
   end
+  if A1 == A2
+    break;
+  end
   gen++;
-  imshow(A1);
+  set(imHandle, 'CData', A1);
   drawnow;
-  %imHandle = imagesc(A,[0 1]);
-  %imfile = [imname,'_n=',int2str(n),'_p=',num2str(p),'_gen=',int2str(gen),'.png'];
-  %imwrite(A1, imfile);
+  imfile = [imname,'_n=',int2str(n),'_p=',num2str(p),'_gen=',int2str(gen),'.png'];
+  imwrite(A1, imfile); 
 end
 
 %while gen < max_gen
