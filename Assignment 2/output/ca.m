@@ -79,7 +79,6 @@ while gen < max_gen
   imshow(A1);
   drawnow;
   neighborSum = conv2(A1, [1 1 1; 1 0 1; 1 1 1], 'same');
-  A1 = double((A1 & neighborSum < 4 | neighborSum>4));
+  A1 = double((A1 & neighborSum < 4) | neighborSum>4);
   gen++;
-
 end
