@@ -9,6 +9,7 @@ times = reshape(times, length(times), 1);
 % Find "raw" peaks in cosines between all positions and the initial position.
 norms = repmat(sum(positions.^2, 1), size(positions,1),1);
 cosines = (positions'./norms')*(positions(:,1)/norms(1));
+cosines = max(cosines, 0);
 [~, inds] = findpeaks(cosines, 'MinPeakHeight', 0.9);
 
 % Construct helper vectors for finding the previous/next time and cosine

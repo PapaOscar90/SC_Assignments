@@ -11,7 +11,8 @@ G = 1.48814e-10;
 dvdt = zeros(3,2);
 
 % Compute accelerations
-dvdt(:,1) = 
-dvdt(:,2) = % TODO
+posDiff = positions(:,2) - positions(:,1);
+dvdt(:,1) = G*masses(2)*(posDiff)/(norm(posDiff)^3);
+dvdt(:,2) = G*masses(1)*(-posDiff)/(norm(posDiff)^3);
 
 end
