@@ -18,8 +18,11 @@ masses = [sunMass earthMass moonMass];
 sunPositions   = squeeze(positions(1:2,1,:))';
 earthPositions = squeeze(positions(1:2,2,:))';
 moonPositions = squeeze(positions(1:2,3,:))';
+subplot(2,1,1);
 plot(earthPositions(:,1), earthPositions(:,2), 'Color', 'blue'); hold on;
 plot(sunPositions(:,1), sunPositions(:,2), 'Color', 'red');
-plot(moonPositions(:,1), moonPositions(:,2), 'Color', 'green');
+plot(moonPositions(:,1), moonPositions(:,2), 'Color', 'black');
+subplot(2,1,2);
+plot(moonPositions(:,1) - earthPositions(:,1), moonPositions(:,2) - earthPositions(:,2));
 earthPeriods = detectOrbitalPeriods(times, squeeze(positions(:,2,:) - positions(:,1,:)))
 moonPeriods = detectOrbitalPeriods(times, squeeze(positions(:,3,:) - positions(:,2,:)))

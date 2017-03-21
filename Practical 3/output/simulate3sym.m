@@ -7,7 +7,7 @@ function [times, positions, velocities] = simulate3sym(masses, initial_positions
 % Units: au, day, 10^24 kg
 
 % Set step size and number of steps
-Delta_t = 1;
+Delta_t = 0.1;
 num_steps = (duration*365)/Delta_t;
 
 % Create times array
