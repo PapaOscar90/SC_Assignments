@@ -7,7 +7,7 @@ function [times, positions, velocities] = simulate2(masses, initial_positions, i
 % Units: au, day, 10^24 kg
 
 % Set step size and number of steps
-Delta_t = 0.1;
+Delta_t = 0.01;
 num_steps = (duration*365)/Delta_t;
 
 % Create times array
