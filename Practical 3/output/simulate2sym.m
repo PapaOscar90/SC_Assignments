@@ -7,7 +7,7 @@ function [times, positions, velocities] = simulate2sym(masses, initial_positions
 % Units: au, day, 10^24 kg
 
 % Set step size and number of steps
-Delta_t = 0.1;
+Delta_t = 1;
 num_steps = (duration*365)/Delta_t;
 
 % Create times array
@@ -24,7 +24,7 @@ for i=1:num_steps
     % Compute derivatives
     dvdt = computeAccelerations2(masses, positions(:,:,i)) * Delta_t;
     velocities(:,:,i+1) = velocities(:,:,i) + dvdt;
-    dxdt = velocities(:,:,i) * Delta_t;
+    dxdt = velocities(:,:,i+1) * Delta_t;
     positions(:,:,i+1) = positions(:,:,i) + dxdt;
     
 end
