@@ -12,12 +12,11 @@ Fup = circshift(F, [2, -1]);
 dFdt = Df * (Fright + Fleft + Fdown + Fup - 4 * F);
 Gright = circshift(G, [1, 1]);
 Gleft = circshift(G, [1, -1]);
-Gdown = circshift(G, [2, 1]);
-Gup = circshift(G, [2, -1]);
-dGdt = Dg * (Gright + Gleft + Gdown + Gup - 4 * G);
+Gdown 
+dGdt = 
 
 % Compute the reaction terms
-dFdt = dFdt + (s/16)*(16 - F.*G);
-dGdt = dGdt + (s/16)*(G > 0).*(F.*G - G - beta);
+dFdt = dFdt + % TODO
+% TODO: update dGdt
 
 end

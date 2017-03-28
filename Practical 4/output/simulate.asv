@@ -9,7 +9,7 @@ imwrite(F/16,'F_step=0.png');
 imwrite(G/16,'G_step=0.png');
 
 % Set step size and number of steps
-Delta_t = 0.25;
+Delta_t = 0.1;
 num_steps = duration/Delta_t;
     
 % Evolve F and G
@@ -18,8 +18,4 @@ for i=1:num_steps
     F = F + Delta_t*dFdt;
     G = G + Delta_t*dGdt;
     G = max(G, 0);
-    if i == 500 || i == 5000 || i == num_steps
-        imwrite(F/16,['F_step=',int2str(i),'.png']);
-        imwrite(G/16,['G_step=',int2str(i),'.png']);
-    end
 end
