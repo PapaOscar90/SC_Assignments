@@ -15,8 +15,8 @@ num_steps = duration/Delta_t;
 % Evolve F and G
 for i=1:num_steps
     [dFdt, dGdt] = reactionDiffusionD(F, G, s, beta);
-    F = F + Delta_t*dFdt;
-    G = G + Delta_t*dGdt;
+    F = F + Delta_t.*dFdt;
+    G = G + Delta_t.*dGdt;
     G = max(G, 0);
     if i == 500 || i == 5000 || i == num_steps
         imwrite(F/16,['F_step=',int2str(i),'.png']);
